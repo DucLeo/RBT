@@ -1,0 +1,8 @@
+﻿  test.cpp
+C:\Users\Le Tuan Anh\source\repos\Test BRT\test.cpp(5,1): warning C4003: not enough arguments for function-like macro invocation 'TEST'
+C:\Users\Le Tuan Anh\source\repos\Test BRT\test.cpp(37,1): warning C4003: not enough arguments for function-like macro invocation 'TEST'
+C:\Users\Le Tuan Anh\source\repos\Test BRT\test.cpp(55,1): warning C4003: not enough arguments for function-like macro invocation 'TEST'
+C:\Users\Le Tuan Anh\source\repos\Test BRT\test.cpp(88,1): warning C4003: not enough arguments for function-like macro invocation 'TEST'
+C:\Users\Le Tuan Anh\source\repos\Test BRT\test.cpp(102,1): warning C4003: not enough arguments for function-like macro invocation 'TEST'
+C:\Users\Le Tuan Anh\source\repos\Test BRT\test.cpp(123,1): warning C4003: not enough arguments for function-like macro invocation 'TEST'
+  Test BRT.vcxproj -> C:\Users\Le Tuan Anh\source\repos\AiCD BRT\Debug\Test BRT.exe
