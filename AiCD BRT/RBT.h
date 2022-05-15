@@ -2,14 +2,11 @@
 #include <iostream>
 #include "Queue.h"
 #include "List.h"
-
 using namespace std;
-
 enum class Color {
 	RED,
 	BLACK
 };
-
 template<class K, class V> class Element {
 public:
 	Color color;
@@ -18,7 +15,6 @@ public:
 	Element* parent;
 	Element* left;
 	Element* right;
-
 	Element() {
 		this->color = Color::RED;
 		this->key = 0;
@@ -28,12 +24,10 @@ public:
 		this->right = NULL;
 	};
 };
-
 template<class K, class V> class RBT {
 public:
 	Element<K, V>* root;
 	Element<K, V>* nil;
-
 	void leftRotate(Element<K, V>* X) {
 		Element<K, V>* Y = X->right;
 		X->right = Y->left;
@@ -44,10 +38,10 @@ public:
 			if (X == X->parent->left) X->parent->left = Y;
 			else X->parent->right = Y;
 		}
+
 		X->parent = Y;
 		Y->left = X;
 	};
-
 	void rightRotate(Element<K, V>* Y) {
 		Element<K, V>* X = Y->left;
 		Y->left = X->right;
@@ -61,7 +55,6 @@ public:
 		Y->parent = X;
 		X->right = Y;
 	};
-
 	void fixupInsert(Element<K, V>* newNode) {
 		while (newNode->parent->color == Color::RED) {
 			if (newNode->parent == newNode->parent->parent->left) {
@@ -102,18 +95,16 @@ public:
 			}
 		}
 		root->color = Color::BLACK;
-	};
 
+	};
 	void insert(K newKey, V newValue) {
 		Element<K, V>* newNode = new Element<K, V>;
 		newNode->key = newKey;
 		newNode->value = newValue;
 		newNode->left = nil;
 		newNode->right = nil;
-
 		Element<K, V>* X = root;
 		Element<K, V>* Y = nil;
-
 		while (X != nil) {
 			Y = X;
 			if (newNode->key == X->key) throw logic_error("This key is exist!");
@@ -130,7 +121,6 @@ public:
 		}
 		fixupInsert(newNode);
 	};
-
 	Element<K, V>* find(K key) {
 		Element<K, V>* cur = root;
 		while (cur != nil) {
@@ -141,7 +131,6 @@ public:
 		if (cur->key == key) return cur;
 		else throw invalid_argument("This key does not exist in the tree!");
 	};
-
 	void fixupRemove(Element<K, V>* X) {
 		Element<K, V>* W;
 		while (X != root && X->color != Color::BLACK) {
@@ -153,12 +142,16 @@ public:
 					leftRotate(X->parent);
 					W = X->parent->right;
 				}
-				else if (W->left->color == Color::BLACK && W->right->color == Color::BLACK) {
+				else if (W->left->color == Color::BLACK && W->right->color ==
+
+					Color::BLACK) {
+
 					W->color = Color::RED;
 					X = X->parent;
 				}
 				else if (W->right->color == Color::BLACK) {
 					W->left->color = Color::BLACK;
+
 					W->color = Color::RED;
 					rightRotate(W);
 					W = X->parent->right;
@@ -179,7 +172,10 @@ public:
 					rightRotate(X->parent);
 					W = X->parent->left;
 				}
-				else if (W->left->color == Color::BLACK && W->right->color == Color::BLACK) {
+				else if (W->left->color == Color::BLACK && W->right->color ==
+
+					Color::BLACK) {
+
 					W->color = Color::RED;
 					X = X->parent;
 				}
@@ -200,7 +196,6 @@ public:
 			X->color = Color::BLACK;
 		}
 	};
-
 	void remove(K keyToBeDeleted) {
 		Element<K, V>* nodeToBeDeleted = find(keyToBeDeleted);
 		Color originalColor = nodeToBeDeleted->color;
@@ -216,6 +211,7 @@ public:
 		}
 		else if (nodeToBeDeleted->right == nil) {
 			x = nodeToBeDeleted->left;
+
 			delete nodeToBeDeleted->right;
 			if (nodeToBeDeleted->parent->left == nodeToBeDeleted)
 				nodeToBeDeleted->parent->left = x;
@@ -254,7 +250,6 @@ public:
 		if (originalColor == Color::BLACK) fixupRemove(x);
 		delete nodeToBeDeleted;
 	};
-
 	Queue<Element<K, V>*>* allElementsByBFT() {
 		Queue<Element<K, V>*>* mainQueue = new Queue<Element<K, V>*>;
 		Queue<Element<K, V>*>* subQueue = new Queue<Element<K, V>*>;
@@ -269,11 +264,11 @@ public:
 		delete subQueue;
 		return mainQueue;
 	}
-
 	void clear() {
 		if (root == nil) throw logic_error("This tree is already empty!");
 		else {
 			Queue<Element<K, V>*>* subQueue = new Queue<Element<K, V>*>;
+
 			Element<K, V>* tmp = root;
 			subQueue->enQueue(tmp);
 			while (!subQueue->isEmpty()) {
@@ -286,7 +281,6 @@ public:
 			root = nil;
 		}
 	};
-
 	void print() {
 		if (root == nil) cout << "This tree is empty!";
 		else {
@@ -294,12 +288,14 @@ public:
 			Queue<Element<K, V>*>* elements = allElementsByBFT();
 			while (!elements->isEmpty()) {
 				tmp = elements->deQueue();
-				cout << "Key: " << tmp->key << " ,with values [" << tmp->value << "]";
+				cout << "Key: " << tmp->key << " ,with values [" << tmp->value
+
+					<< "]";
+
 				if (!elements->isEmpty()) cout << ",\n";
 			}
 		}
 	};
-
 	List<K>* getKeys() {
 		List<K>* keys = new List<K>;
 		Queue<Element<K, V>*>* elements = allElementsByBFT();
@@ -309,7 +305,6 @@ public:
 		delete elements;
 		return keys;
 	};
-
 	List<V>* getValues() {
 		List<V>* values = new List<V>;
 		Queue<Element<K, V>*>* elements = allElementsByBFT();
@@ -319,7 +314,6 @@ public:
 		delete elements;
 		return values;
 	};
-
 	RBT() {
 		nil = new Element<K, V>();
 		nil->color = Color::BLACK;
