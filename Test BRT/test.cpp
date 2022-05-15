@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "gtest/gtest.h"
-#include "..\AiCD BRT\RBT.h"
+#include "..\BRT\RBT.h"
 
 TEST(Test_Insert) {
 	//When tree is empty

@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4b1bb97d-a61c-4690-854d-f6f832713a20": {
+      "ProjectGuid": "4b1bb97d-a61c-4690-854d-f6f832713a20",
+      "DisplayName": "AiCD BRT",
+      "ColorIndex": 0
+    },
+    "bb0f75bb-1e6b-4fb9-bee4-f4466cc034ac": {
+      "ProjectGuid": "bb0f75bb-1e6b-4fb9-bee4-f4466cc034ac",
+      "DisplayName": "Test BRT",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "5b0d9ab2-e295-4a44-8d77-a87f807907f0": {
+      "ProjectGuid": "5b0d9ab2-e295-4a44-8d77-a87f807907f0",
+      "DisplayName": "Test BRT",
+      "ColorIndex": 2
+    },
+    "58bf8988-bbca-435b-aec5-52fb74692e87": {
+      "ProjectGuid": "58bf8988-bbca-435b-aec5-52fb74692e87",
+      "DisplayName": "Test BRT",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
